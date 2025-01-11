@@ -1,10 +1,7 @@
 import { defineConfig } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
-
 import tailwind from "@astrojs/tailwind";
-
 import react from "@astrojs/react";
-
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,6 +13,14 @@ export default defineConfig({
     },
   }),
   security: {
-		checkOrigin: false
-	}
+    checkOrigin: false
+  },
+  build: {
+    inlineStylesheets: 'never'
+  },
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/noop'
+    }
+  }
 });
